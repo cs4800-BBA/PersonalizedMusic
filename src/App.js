@@ -16,12 +16,12 @@ const App = () => {
   };
   return (
     <div className="app">
-      <h1>MovieLand</h1>
+      <h1>Personalized Music Recommender</h1>
       <div className="search">
         <input
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search for movies"
+          placeholder="Search for songs"
         />
         <img
           src={SearchIcon}
