@@ -31,8 +31,8 @@ h1 {
   letter-spacing: 0.9px;
   background: linear-gradient(
     90deg,
-    rgba(249, 211, 180, 1) 0%,
-    rgba(249, 211, 180, 0) 100%
+    rgb(61, 112, 76) 0%,
+    rgb(61, 112, 76) 0%
   );
   background-clip: text;
   -webkit-background-clip: text;
