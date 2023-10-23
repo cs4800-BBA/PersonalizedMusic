@@ -3,7 +3,7 @@ import SearchIcon from "./search.svg";
 import "./App.css";
 
 const App = () => {
-  
+
   const [searchTerm, setSearchTerm] = useState("");
   
   return (
@@ -21,7 +21,7 @@ const App = () => {
           onClick={() => setSearchTerm(e.target.value)} // Change this
         />
       </div>
-        <div className="empty">
+        <div>
           <h2>No songs found</h2>
         </div>
     </div>
