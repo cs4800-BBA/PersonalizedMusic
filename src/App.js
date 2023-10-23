@@ -4,6 +4,8 @@ import "./App.css";
 
 const App = () => {
   
+  const [searchTerm, setSearchTerm] = useState("");
+  
   return (
     <div className="app">
       <h1>Personalized Music Recommender</h1>
