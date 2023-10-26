@@ -16,10 +16,10 @@ const App = () => {
 
  /*Get Song from Backend */
   const searchSong = async (song) => {
-    const API_URL = "https://personal-music-recommendation.azurewebsites.net/api/recommendation";
+    /*const API_URL = "https://personal-music-recommendation.azurewebsites.net/api/recommendation";
     const functionKey = "BiLtlWfdvS4NmIH_Y9_xDnCT1Cs5rOLoLWvenK88PQW8AzFuDX25TA==";
 
-    /*const response = await fetch(`${API_URL}?code=${functionKey}&song=${song}`) ;
+    const response = await fetch(`${API_URL}?code=${functionKey}&song=${song}`) ;
     const data = await response.json();
     setSong(data.Search); */
   };
@@ -32,6 +32,7 @@ const App = () => {
         <input
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          onChange2={(e) => setSong(e.target.value)}
           placeholder="Search for songs"
         />
         <img
