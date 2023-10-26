@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from "react";
-import MovieCard from "./MovieCard";
+import SongCard from "./SongCard";
 import SearchIcon from "./search.svg";
 import "./App.css";
 const API_URL = "https://personal-music-recommendation.azurewebsites.net/api";
 const App = () => {
+  
   const [searchTerm, setSearchTerm] = useState("");
-  const [movies, setMovies] = useState([]);
+  const [songs, setSong] = useState([]);
+  
+  
   useEffect(() => {
-    searchMovies("Batman");
+    searchSong("Firework");
   }, []);
-  const searchMovies = async (title) => {
-    const response = await fetch(`${API_URL}&s=${title}`);
+
+  const searchSong = async (song) => {
+    const response = await fetch(`${API_URL}recommendation?code=dkS5_6Zm8E-ElF4KzKlwPwZTDm-0_5d2_Q-Re5afhl-yAzFu-Ak5rg==&song=${song}`);
     const data = await response.json();
-    setMovies(data.Search);
+    setSong(data.Search);
   };
   return (
     <div className="app">
@@ -26,13 +30,13 @@ const App = () => {
         <img
           src={SearchIcon}
           alt="search"
-          onClick={() => searchMovies(searchTerm)}
+          onClick={() => searchSongs(searchTerm)}
         />
       </div>
-      {movies?.length > 0 ? (
+      {songs?.length > 0 ? (
         <div className="container">
-          {movies.map((movie) => (
-            <MovieCard movie={movie} />
+          {songs.map((songs) => (
+            <SongCard songs={songs} />
           ))}
         </div>
       ) : (
