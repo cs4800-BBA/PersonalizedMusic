@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import SongCard from "./SongCard";
+//import SongCard from "./SongCard";
 import SearchIcon from "./search.svg";
 import "./App.css";
 
@@ -59,7 +59,7 @@ const App = () => {
             <p>Name: {track.name}</p>
             <p>Artists: {track.artists.join(', ')}</p>
             <p>Listen on Spotify: <a href={track.external_url} target="_blank" rel="noopener noreferrer">Listen</a></p>
-            <img src={track.images[0].url}/>
+            <img src={track.images[0].url} alt="Track" />
           </li>
         ))}
       </ul>
