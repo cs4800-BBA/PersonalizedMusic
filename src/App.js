@@ -6,7 +6,7 @@ import "./App.css";
 const App = () => {
   
   const [searchTerm, setSearchTerm] = useState("");
-  const [songs, setSong] = useState([]);
+  //const [songs, setSong] = useState([]);
   const [recommendedTracks, setRecommendedTracks] = useState([]);
   
   useEffect(() => {
@@ -50,14 +50,8 @@ const App = () => {
           onClick={() => searchSong(searchTerm)}
         />
       </div>
-      {songs?.length > 0 ? (
-        <div className="container">
-          {songs.map((songs) => (
-            <SongCard songs={songs} />
-          ))}
-        </div>
-      ) : (
-        <div>
+
+      <div>
       <h2>Recommended Tracks</h2>
       <ul>
         {recommendedTracks.map((track, index) => (
@@ -65,12 +59,12 @@ const App = () => {
             <p>Name: {track.name}</p>
             <p>Artists: {track.artists.join(', ')}</p>
             <p>Listen on Spotify: <a href={track.external_url} target="_blank" rel="noopener noreferrer">Listen</a></p>
-            <img src={track.images[0].url} alt="Track Image" />
+            <img src={track.images[0].url}/>
           </li>
         ))}
       </ul>
     </div>
-      )}
+      
     </div>
   );
 };
