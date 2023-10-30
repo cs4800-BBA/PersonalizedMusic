@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SongCard = ({ movie: { name, artist, external_url, image_url } }) => {
+const SongCard = ({ movie: { name, artists, external_url, image_url } }) => {
   return (
     <div className="song" key={name}>
       <div>

@@ -7,7 +7,7 @@ const App = () => {
   
   const [searchTerm, setSearchTerm] = useState("");
   const [songs, setSong] = useState([]);
-  
+  const [recommendedTracks, setRecommendedTracks] = useState([]);
   
   useEffect(() => {
     searchSong("Firework");
@@ -16,13 +16,23 @@ const App = () => {
 
 // Get Song from Backend
   const searchSong = async (song) => {
+    
     const API_URL = "https://personal-music-recommendation.azurewebsites.net/api/recommendation";
     const functionKey = "BiLtlWfdvS4NmIH_Y9_xDnCT1Cs5rOLoLWvenK88PQW8AzFuDX25TA==";
-
     const response = await fetch(`${API_URL}?code=${functionKey}&song=${song}`) ;
     const data = await response.json();
-  setSong(data.Search);
+   
+   if (Array.isArray(data)) {
+    const recommendedTracks = data.map(recommendation => ({
+      name: recommendation.name,
+      artists: recommendation.artists,
+      external_url: recommendation.external_url,
+      images: recommendation.images
+    }));
+
+    setRecommendedTracks(recommendedTracks);
   };
+}
 
 
   return (
@@ -47,9 +57,19 @@ const App = () => {
           ))}
         </div>
       ) : (
-        <div className="empty">
-          <h2>"No Songs Found</h2>
-        </div>
+        <div>
+      <h2>Recommended Tracks</h2>
+      <ul>
+        {recommendedTracks.map((track, index) => (
+          <li key={index}>
+            <p>Name: {track.name}</p>
+            <p>Artists: {track.artists.join(', ')}</p>
+            <p>Listen on Spotify: <a href={track.external_url} target="_blank" rel="noopener noreferrer">Listen</a></p>
+            <img src={track.images[0].url} alt="Track Image" />
+          </li>
+        ))}
+      </ul>
+    </div>
       )}
     </div>
   );
