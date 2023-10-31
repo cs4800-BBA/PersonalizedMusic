@@ -40,6 +40,17 @@ h1 {
   width: fit-content;
 }
 
+
+h2 {
+  font-size: 3rem;
+  background-color: #ffffff;
+  letter-spacing: 0.9px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+}
+
 .search {
   width: 71%;
   margin: 4rem 0 2rem;
@@ -153,4 +164,8 @@ h1 {
     width: "100%";
     margin: 1rem;
   }
+}
+
+.track-item {
+  color: rgb(255, 255, 255);
 }

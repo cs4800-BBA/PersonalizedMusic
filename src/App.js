@@ -42,6 +42,11 @@ const App = () => {
         <input
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.keyCode === 13) {
+              searchSong(searchTerm);
+            }
+          }}
           placeholder="Search for songs"
         />
         <img
@@ -55,7 +60,7 @@ const App = () => {
       <h2>Recommended Tracks</h2>
       <ul>
         {recommendedTracks.map((track, index) => (
-          <li key={index}>
+          <li key={index} className="track-item">
             <p>Name: {track.name}</p>
             <p>Artists: {track.artists.join(', ')}</p>
             <p>Listen on Spotify: <a href={track.external_url} target="_blank" rel="noopener noreferrer">Listen</a></p>
