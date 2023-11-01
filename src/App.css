@@ -38,6 +38,7 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   width: fit-content;
+  
 }
 
 
@@ -171,13 +172,21 @@ h2 {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
   .song h3 {
     overflow: hidden;
   }
+
+  .search{
+    width: 110%;
+  }
+
+  h1{
+    text-align: center;
+  }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 850px) {
   .song h3 {
     overflow: visible;
   }
