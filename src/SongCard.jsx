@@ -1,21 +1,16 @@
 import React from 'react';
+import "./App.css";
 
-const SongCard = ({ movie: { name, artists, external_url, image_url } }) => {
+const SongCard = ({ song }) => {
   return (
-    <div className="song" key={name}>
-      <div>
-        <p>{external_url}</p>
-      </div>
-
-      <div>
-        <img src={image_url !== "N/A" ? image_url : "https://via.placeholder.com/400"} alt={name} />
-      </div>
-
-      <div>
-        <h3>{image_url}</h3>
-      </div>
+    <div className="song">
+      <h3>{song.name}</h3>
+      <span>{song.artists.join(', ')}</span>
+      <a href={song.external_url} target="_blank" rel="noopener noreferrer">
+        <img src={song.images[0].url} width="100%" height="100%" alt="Track" />
+      </a>
     </div>
   );
-}
+};
 
 export default SongCard;
