@@ -14,15 +14,12 @@
 
 body {
   font-family: var(--font-roboto);
-  background-color: #121212;
+  background: linear-gradient(to top, #211f1f 0%, #121212 100%);
 }
 
 .app {
   padding: 3rem;
-
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
 }
 
@@ -54,7 +51,7 @@ h2 {
 }
 
 .search {
-  width: 71%;
+  width: 75%;
   margin: 4rem 0 2rem;
 
   display: flex;
@@ -64,8 +61,7 @@ h2 {
   padding: 1.5rem 1.75rem;
   border-radius: 3rem;
   background: #1f2123;
-  -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #121212;
-  box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #121212;
+  
 }
 
 .search input {
@@ -77,7 +73,7 @@ h2 {
   padding-right:  rem;
 
   outline: none;
-  color: #a1a1a1;
+  color: #ffffff;
   background: #1f2123;
 }
 
@@ -100,8 +96,7 @@ h2 {
   cursor: pointer;
 
   background: #1f2123;
-  -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #121212;
-  box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #121212;
+
 } 
 
 .empty {
@@ -131,7 +126,7 @@ h2 {
 
 
 .song {
-  width: 380px;
+  width: 300px;
   height: 100%;
   margin: 1rem;
 
@@ -169,16 +164,16 @@ h2 {
 }
 
 
-@media (max-width: 850px) {
+@media (max-width: 1025px) {
   .song h3 {
     overflow: hidden;
   }
 
   .search{
-    width: 110%;
+    width: 95%;
   }
   .search input {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   .song{
     width: 300px;

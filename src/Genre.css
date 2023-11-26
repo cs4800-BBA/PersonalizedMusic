@@ -1,0 +1,182 @@
+.searchGenre {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 35%;
+    margin: 0 0 2rem;
+    padding: 1rem 1.25rem;
+    border-radius: 3rem;
+    background: #1f2123;
+    position: relative;
+  }
+  
+  .searchGenre input {
+    flex: 1;
+    border: none;
+    font-size: 1.5rem;
+    font-family: var(--font-raleway);
+    font-weight: 500;
+    padding-right: 0rem;
+    outline: none;
+    color: #ffffff;
+    background: #1f2123;
+  }
+  
+  .searchGenre img {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    fill: white;
+  }
+
+  .container1 {
+    width: 100%;
+    margin-top: 0rem;
+  
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Style for the button container */
+  .genreButtons {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 20px; /* Adjust as needed */
+  }
+  
+  /* Style for the 'x' buttons */
+  .genreButtons button {
+    background-color: white;
+    color: #1f2123;
+    border: none;
+    border-radius: 50%; /* For a circular button */
+    padding: 5px;
+    margin-left: 0px; /* Adjust as needed */
+    cursor: pointer;
+  }
+  
+  /* Other styles remain unchanged */
+  
+  
+  .searchGenre .remove-button {
+    background-color: white;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%; /* For a circular button */
+    padding: 5px;
+    margin-left: 10px; /* Adjust as needed */
+    cursor: pointer;
+    position: absolute; /* Position the 'x' buttons */
+    right: 10px; /* Adjust distance from the right */
+  }
+
+  
+  .searchGenre button {
+    padding: 20px 0px;
+    border-radius: 0.5rem;
+    margin-left: 15px;
+    color: #ffffff;
+    font-family: var(--font-raleway);
+    font-weight: 900;
+    letter-spacing: 0.75px;
+    font-size: 1.25rem;
+    cursor: pointer;
+  
+    background: #1f2123;
+    -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #121212;
+    box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #121212;
+  } 
+  
+  
+  input {
+    flex: 1;
+    border: none;
+    font-size: 1.5rem;
+    font-family: var(--font-raleway);
+    font-weight: 500;
+    padding-right:  0rem;
+  
+    outline: none;
+    color: #ffffff;
+    background: #1f2123;
+  }
+  
+  .no-suggestions {
+    color: #999;
+    padding: .5rem; 
+  }
+  
+  .suggestions {
+    border: 1px solid #999;
+    color: #ffffff;
+    border-top-width: 0;
+    list-style: none;
+    margin-top: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    padding-left: 0;
+    width: calc(300px + 1rem);
+  }
+  
+  .suggestions li {
+    padding: .5rem;
+  }
+  
+  .suggestion-active,
+  .suggestions li:hover {
+    background-color: #008f68;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  
+  .suggestions li:not(:last-of-type) {
+    border-bottom: 1px solid #999;
+  }
+
+  .remove-icon {
+    width: 5px; 
+    height: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+ 
+.span{
+    color: #ffffff;
+}
+
+.selectedGenre {
+    display: inline-flex;
+    align-items: center;
+    background: #1f2123; /* Background color for the selected genre */
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    margin-right: 0.5rem; /* Adjust spacing between genres */
+  }
+  
+  .selectedGenre span {
+    color: white; /* Make the text white */
+    margin-right: 0.5rem; /* Adjust spacing between text and 'x' icon */
+  }
+
+  .x{
+    transform: rotate(45deg);
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+
+@media (max-width: 1025px) {
+    .searchGenre{
+      width: 75%;
+    }
+    .searchGenre input{
+      font-size: 1.2rem;
+    }
+  }
+  
