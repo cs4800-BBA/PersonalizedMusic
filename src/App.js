@@ -30,10 +30,9 @@ const App = () => {
   
   
   useEffect(() => {
-    setIsGenre(false);
-    searchOgSong("hello");
     searchSong("hello");
-  }, []);
+    searchOgSong("hello");
+  }, );
 
   const handleSelectedGenresChange = (selectedGenres) => {
     setSelectedGenres(selectedGenres);
@@ -43,7 +42,7 @@ const App = () => {
 
   // Get Song Recommendations from Backend
   const searchSong = async (song, selectedGenres = []) => {
-    if(searchTerm.length < 1){
+    if(searchTerm.length < 1 && song !== "hello"){
       setIsGenre(true);
     }else{
       setIsGenre(false);
