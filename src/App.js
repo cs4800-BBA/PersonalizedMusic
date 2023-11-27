@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SongCard from "./SongCard";
 import FindGenres from "./FindGenres";
 import SearchIcon from "./search.svg";
@@ -29,10 +29,6 @@ const App = () => {
   const [isGenre, setIsGenre] = useState([]);
   
   
-  useEffect(() => {
-    searchSong("hello");
-    searchOgSong("hello");
-  }, );
 
   const handleSelectedGenresChange = (selectedGenres) => {
     setSelectedGenres(selectedGenres);
