@@ -68,17 +68,32 @@ class FindGenres extends Component {
   handlePlusIconClick = () => {
     const { userInput, selectedGenres } = this.state;
     if (userInput && selectedGenres.length < 5) {
-      this.setState({
-        selectedGenres: [...selectedGenres, userInput], // Add userInput to selectedGenres array
-        userInput: "" // Clear the userInput
-      });
+      const updatedGenres = [...selectedGenres, userInput];
+      this.setState(
+        {
+          selectedGenres: updatedGenres,
+          userInput: "",
+        },
+        () => {
+          // Invoke the callback passed from App.js to update selected genres in App.js
+          this.props.onSelectedGenresChange(updatedGenres);
+        }
+      );
     }
   };
 
   handleRemoveGenre = (genreIndex) => {
     const { selectedGenres } = this.state;
     const updatedGenres = selectedGenres.filter((_, index) => index !== genreIndex);
-    this.setState({ selectedGenres: updatedGenres });
+    this.setState(
+      {
+        selectedGenres: updatedGenres,
+      },
+      () => {
+        // Invoke the callback passed from App.js to update selected genres in App.js
+        this.props.onSelectedGenresChange(updatedGenres);
+      }
+    );
   };
 
   render() {
@@ -91,7 +106,7 @@ class FindGenres extends Component {
         filteredSuggestions,
         showSuggestions,
         userInput,
-        selectedGenres // Include selectedGenres in state
+        selectedGenres
       }
     } = this;
 

@@ -32,7 +32,7 @@
   .container1 {
     width: 100%;
     margin-top: 0rem;
-  
+    gap: 1rem;
     display:flex;
     justify-content: left;
     align-items: center;
@@ -138,10 +138,11 @@
   }
 
   .remove-icon {
-    width: 5px; 
-    height: 5px;
+    width: 15px; 
+    height: 15px;
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: 0px;
+    rotate: 45deg;
   }
   
  
@@ -165,8 +166,8 @@
 
   .x{
     transform: rotate(45deg);
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     cursor: pointer;
     margin-left: 5px;
   }
@@ -180,3 +181,11 @@
     }
   }
   
+  @media (max-width: 800px){
+    .searchGenre{
+      width: 100%;
+    }
+    .searchGenre input{
+      font-size: .8rem;
+    }
+  }

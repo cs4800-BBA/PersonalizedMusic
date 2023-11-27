@@ -25,41 +25,49 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [ogSong, setSong] = useState([]);
   const [recommendedTracks, setRecommendedTracks] = useState([]);
-  const [isGenre, setIsGenre] = useState([]);
-
-  
+  const [selectedGenres, setSelectedGenres] = useState([]);
   
   
   useEffect(() => {
     searchOgSong("Firework");
     searchSong("Firework");
-    
   }, []);
 
+  const handleSelectedGenresChange = (selectedGenres) => {
+    setSelectedGenres(selectedGenres);
+    searchSong(searchTerm, selectedGenres); // Call searchSong with the updated selected genres
+  };
+  
 
   // Get Song Recommendations from Backend
-  const searchSong = async (song) => {
-    
+  const searchSong = async (song, selectedGenres = []) => {
     const API_URL = "https://personal-music-recommendation.azurewebsites.net/api/recommendation";
     const functionKey = "BiLtlWfdvS4NmIH_Y9_xDnCT1Cs5rOLoLWvenK88PQW8AzFuDX25TA==";
-    const response = await fetch(`${API_URL}?code=${functionKey}&limit=11&song=${song}`) ;
+    
+    const genresQueryParam = selectedGenres.length > 0 ? `&genre=${selectedGenres.join(',')}` : '';
+  
+    const response = await fetch(`${API_URL}?code=${functionKey}&limit=11&song=${song}${genresQueryParam}`);
     const data = await response.json();
-   
+  
     if (Array.isArray(data)) {
-    const recommendedTracks = data.map(recommendation => ({
-      name: recommendation.name,
-      artists: recommendation.artists,
-      external_url: recommendation.external_url,
-      images: recommendation.images
-    }));
-
-    setRecommendedTracks(recommendedTracks);
-    };
-  }
+      const recommendedTracks = data.map(recommendation => ({
+        name: recommendation.name,
+        artists: recommendation.artists,
+        external_url: recommendation.external_url,
+        images: recommendation.images
+      }));
+  
+      setRecommendedTracks(recommendedTracks);
+    } else {
+      console.log("Invalid Song Entry");
+    }
+  };
+  
+  
 
   // Get Original Song from Backend
   const searchOgSong = async (song) => {
-    
+    setSelectedGenres(<FindGenres selectedGenres/>)
     const API_URL = "https://personal-music-recommendation.azurewebsites.net/api/search";
     const functionKey = "dkS5_6Zm8E-ElF4KzKlwPwZTDm-0_5d2_Q-Re5afhl-yAzFu-Ak5rg==";
     const response = await fetch(`${API_URL}?code=${functionKey}&limit=1&q=${song}`) ;
@@ -74,7 +82,6 @@ const App = () => {
     }));
 
     setSong(ogSong);
-    setIsGenre(false);  
   };
   }
 
@@ -90,7 +97,7 @@ const App = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={(e) => {
             if (e.keyCode === 13) {
-              searchSong(searchTerm);
+              searchSong(searchTerm, selectedGenres);
               searchOgSong(searchTerm);
             }}}
         placeholder="Get recommendation by song .  .  ."
@@ -100,20 +107,21 @@ const App = () => {
         alt="search"
         onClick={() => {
               searchOgSong(searchTerm);
-              searchSong(searchTerm);
+              searchSong(searchTerm, selectedGenres);
             }}
       />
     </div>
-
-      <div>
-          <FindGenres suggestions={genres}/>
-      </div>
-          
+    <FindGenres
+    suggestions={genres}
+    selectedGenres={selectedGenres}
+    setSelectedGenres={handleSelectedGenresChange}
+    onSelectedGenresChange={handleSelectedGenresChange}
+  />
       
     <div>
       <div className="container">
         {ogSong.map((track, index) => (
-          (!isGenre) && <SongCard song={track} key={index} />
+          <SongCard song={track} key={index} />
             ))}
         {recommendedTracks.map((track, index) => (
           <SongCard song={track} key={index} />
