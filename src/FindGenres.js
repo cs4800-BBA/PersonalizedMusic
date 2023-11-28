@@ -74,7 +74,10 @@ class FindGenres extends Component {
           selectedGenres: updatedGenres,
           userInput: "",
         },
-
+        () => {
+          // Invoke the callback passed from App.js to update selected genres in App.js
+          this.props.onSelectedGenresChange(updatedGenres);
+        }
       );
     }
   };
@@ -86,6 +89,10 @@ class FindGenres extends Component {
       {
         selectedGenres: updatedGenres,
       },
+      () => {
+          // Invoke the callback passed from App.js to update selected genres in App.js
+          this.props.onSelectedGenresChange(updatedGenres);
+        }
     );
   };
 
