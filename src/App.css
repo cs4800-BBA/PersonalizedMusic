@@ -13,8 +13,13 @@
 }
 
 body {
-  font-family: var(--font-roboto);
-  background: linear-gradient(to top, #211f1f 20%, #121212 80%);
+  margin: 0;
+  padding: 0;
+  /* Fallback for older browsers */
+  background-color: #232323; /* Fallback color if gradients are not supported */
+  /* Gradient code for modern browsers */
+  background-image: linear-gradient(to right, #121212 0%, #141414 25%, #161616 50%, #181818 75%, #212121 120%);
+
 }
 
 .app {
@@ -68,7 +73,7 @@ h2 {
   flex: 1;
   border: none;
   font-size: 1.5rem;
-  font-family: var(--font-raleway);
+  font-family: var(--font-roboto);
   font-weight: 500;
   padding-right:  rem;
 
