@@ -43,12 +43,12 @@ const App = () => {
     }else{
       setIsGenre(false);
     }
-    const API_URL = "https://personal-music-recommendation.azurewebsites.net/api/recommendation";
-    const functionKey = "BiLtlWfdvS4NmIH_Y9_xDnCT1Cs5rOLoLWvenK88PQW8AzFuDX25TA==";
+    const API_URL = "https://pmrapim.azure-api.net/personal-music-recommendation/recommendation";
+    //const functionKey = "BiLtlWfdvS4NmIH_Y9_xDnCT1Cs5rOLoLWvenK88PQW8AzFuDX25TA==";
     
     const genresQueryParam = selectedGenres.length > 0 ? `&genre=${selectedGenres.join(',')}` : '';
   
-    const response = await fetch(`${API_URL}?code=${functionKey}&limit=11&song=${song}${genresQueryParam}`);
+    const response = await fetch(`${API_URL}?limit=11&song=${song}${genresQueryParam}`);
     const data = await response.json();
   
     if (Array.isArray(data)) {
@@ -70,9 +70,9 @@ const App = () => {
   // Get Original Song from Backend
   const searchOgSong = async (song) => {
     setSelectedGenres(<FindGenres selectedGenres/>)
-    const API_URL = "https://personal-music-recommendation.azurewebsites.net/api/search";
-    const functionKey = "dkS5_6Zm8E-ElF4KzKlwPwZTDm-0_5d2_Q-Re5afhl-yAzFu-Ak5rg==";
-    const response = await fetch(`${API_URL}?code=${functionKey}&limit=1&q=${song}`) ;
+    const API_URL = "https://pmrapim.azure-api.net/personal-music-recommendation/search";
+    //const functionKey = "dkS5_6Zm8E-ElF4KzKlwPwZTDm-0_5d2_Q-Re5afhl-yAzFu-Ak5rg==";
+    const response = await fetch(`${API_URL}?limit=1&q=${song}`) ;
     const data = await response.json();
   
   if (Array.isArray(data)) {
