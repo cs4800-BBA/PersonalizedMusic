@@ -38,7 +38,7 @@ const App = () => {
 
   // Get Song Recommendations from Backend
   const searchSong = async (song, selectedGenres = []) => {
-    if(searchTerm.length < 1 && song !== "hello"){
+    if(searchTerm.length < 1){
       setIsGenre(true);
     }else{
       setIsGenre(false);
